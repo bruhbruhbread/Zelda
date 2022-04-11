@@ -191,6 +191,10 @@ class Player(Entity):
         else:
             self.energy = self.stats['energy']
 
+    def check_death(self):
+        if self.health <= 0:
+            self.kill()
+
     def update(self):
         self.input()
         self.cooldowns()
@@ -198,3 +202,4 @@ class Player(Entity):
         self.animate()
         self.move(self.speed)
         self.energy_recovery()
+        self.check_death()
